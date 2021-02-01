@@ -1,0 +1,6 @@
+[local]
+desktop ansible_host=localhost ansible_user=sergio.rodriguez ansible_connection_port=22
+
+[virtuals]
+ubuntu-node-01 ansible_host=192.168.1.67 ansible_user=srodriguez ansible_connection_port=22
+fedora-node-02 ansible_host=192.168.1.66 ansible_user=srodriguez ansible_connection_port=22

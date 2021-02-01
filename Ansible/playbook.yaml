@@ -1,0 +1,9 @@
+---
+- hosts: all
+  # Become root user
+  become: yes
+  # List of tasks to be executed
+  tasks:
+    - yum:
+      name=wget
+      state=absent
