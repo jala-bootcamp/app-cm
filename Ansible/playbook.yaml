@@ -4,6 +4,15 @@
   become: yes
   # List of tasks to be executed
   tasks:
-    - yum:
-      name=wget
-      state=absent
+    - name: Remove wget from RHEL like
+      become: yes
+      yum:
+        name: httpd
+        state: present
+        tags: webserver
+    - name: Remove wget from RHEL like
+      become: yes
+      apt:
+        name: httpd
+        state: present
+        tags: webserver
