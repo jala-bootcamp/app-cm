@@ -1,0 +1,8 @@
+---
+- name: Update with apt and remove un-needed packages on Debian/Ubuntu systems
+  apt: update_cache=yes upgrade=full autoclean=yes autoremove=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Update all packages all yum packages on RHEL based systems
+  yum: name=* state=latest update_cache=yes
+  when: ansible_distribution == 'Fedora' or ansible_distribution == 'RedHat'

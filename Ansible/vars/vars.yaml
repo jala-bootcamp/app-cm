@@ -1,0 +1,3 @@
+---
+ansible_user: srodriguez
+ansible_connection_port: 22
