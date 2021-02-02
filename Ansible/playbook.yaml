@@ -12,12 +12,12 @@
     - name: Install Nginx server on RHEL like servers
       become: true
       yum:
-        name: httpd
+        name: nginx
         state: absent
         tags: webserver
     - name: Remove wget from RHEL like
       become: true
       apt:
-        name: httpd
+        name: nginx
         state: absent
         tags: webserver

@@ -1,10 +1,10 @@
 ---
-- name: Open HTTP port for the webservers
-  firewalld: service=http permanent=true state=enabled
-
 - name: Install common packages, upgrade if available
   package: name={{ item }} state=latest
   loop:
    - "{{ apache_package }}"
    - "{{ vim_package }}"
    - "{{ tmux_package }}"
+
+- name: Open HTTP port for the webservers
+  firewalld: service=http permanent=true state=enabled
