@@ -11,3 +11,20 @@
     ansible_python_interpreter: '/usr/bin/python3'
   tags:
     - webserver_port
+
+- name: Ensure group "Jenkins" exists
+  ansible.builtin.group:
+    name: jenkins
+    state: present
+  tags:
+    - jenkins_user
+
+- name: Create Jenkins user
+  user:
+    name: jenkins
+    generate_ssh_key: true
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    group: jenkins
+  tags:
+    - jenkins_user
