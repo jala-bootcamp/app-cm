@@ -22,9 +22,27 @@
 - name: Create Jenkins user
   user:
     name: jenkins
-    generate_ssh_key: true
-    ssh_key_bits: 2048
-    ssh_key_file: .ssh/id_rsa
+    shell: /bin/bash
     group: jenkins
+  register: jenkins_user
+  tags:
+    - jenkins_user
+
+- name: Generate SSH key locally
+  openssh_keypair:
+    path: "/tmp/id_rsa.jenkins"
+    type: rsa
+    size: 2048
+    state: present
+    force: false
+  delegate_to: localhost
+  tags:
+    - jenkins_user
+
+- name: Ensure we can connect using Jenkins user and key
+  authorized_key:
+    user: jenkins
+    key: "{{ lookup ('file', '/tmp/id_rsa.jenkins.pub') }}"
+    state: present
   tags:
     - jenkins_user

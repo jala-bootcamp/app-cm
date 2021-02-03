@@ -6,3 +6,4 @@ packages:
   - tmux
   - vim
   - firewalld
+  - openjdk-8-jdk
