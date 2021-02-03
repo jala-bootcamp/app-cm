@@ -1,6 +1,8 @@
 ---
 
 # Packages
-apache_package: httpd
-tmux_package: tmux
-vim_package: vim
+packages:
+  - httpd
+  - tmux
+  - vim
+  - python-firewall

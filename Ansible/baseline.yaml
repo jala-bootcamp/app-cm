@@ -3,7 +3,8 @@
   become: true
   gather_facts: true
   vars_files:
-    - ["vars/vars.yaml", "vars/{{ ansible_os_family }}.yaml"]
+    - vars/vars.yaml
+    - vars/{{ ansible_os_family }}.yaml
   roles:
     - {role: system_updates}
     - {role: common}
